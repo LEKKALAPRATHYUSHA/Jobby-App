@@ -1,18 +1,36 @@
 import {Link} from 'react-router-dom'
 
-const JobItem = ({details}) => (
-  <li>
-    <Link to={`/jobs/${details.id}`}>
-      <img src={details.company_logo_url} alt="company logo" />
-      <h1>{details.title}</h1>
-      <p>{details.rating}</p>
-      <p>{details.location}</p>
-      <p>{details.employment_type}</p>
+const JobItem = props => {
+  const {details} = props
 
-      <h1>Description</h1>
-      <p>{details.job_description}</p>
-    </Link>
-  </li>
-)
+  const {
+    companyLogoUrl,
+    title,
+    rating,
+    location,
+    employmentType,
+    jobDescription,
+  } = details
+
+  return (
+    <li>
+      <Link to={`/jobs/${details.id}`}>
+        <img src={companyLogoUrl} alt="company logo" />
+
+        <h1>{title}</h1>
+
+        <p>{rating}</p>
+
+        <p>{location}</p>
+
+        <p>{employmentType}</p>
+
+        <h1>Description</h1>
+
+        <p>{jobDescription}</p>
+      </Link>
+    </li>
+  )
+}
 
 export default JobItem
